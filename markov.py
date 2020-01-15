@@ -53,33 +53,15 @@ def make_chains(text_string):
     for i in range(len(words)-2):
         key = (words[i], words[i+1])
         value_item = words[i+2]
-        print(key)
-        print(value_item)
+        # print(key)
+        # print(value_item)
 
         # check for existence of key in idct
         # if key does not exist, set the value of the key in the dict as an empty list
         # if key exist, append the value item of the key to the list
         
-
-        
         chains[key] = chains.get(key, []) + [value_item]
         
-    
-
-
-        # chains.get(key, [])
-        
-
-
-
-    print(chains)
-        
-
-
-
-
-    
-
 
     # your code goes here
 
@@ -91,9 +73,39 @@ def make_text(chains):
 
     words = []
 
-    # your code goes here
+    current_key = ("Would", "you")
 
-    return " ".join(words)
+    new_string = ""
+
+    # value_for_random_choice = chains[("Would", "you")]
+
+    # random_v = choice(value_for_random_choice)
+
+    # new_key = ((current_key)[1], random_v)
+
+    # new_key = (current_key)[1], choice(chains[("Would", "you")])
+
+    new_key = (current_key)[1], choice(chains[("Would", "you")])
+
+    words.append(new_key)
+
+    # print(words)
+
+    while new_key in chains:
+
+        new_key = (new_key)[1], choice(chains[new_key])
+        
+        words.append(new_key[0])
+
+    for word in words:
+
+        new_string += str(word[0])
+
+    print(new_string)
+
+
+
+    # return " ".join(words)
 
 
 input_path = "green-eggs.txt"
@@ -106,7 +118,7 @@ input_text = open_and_read_file(input_path)
 # Get a Markov chain
 chains = make_chains(input_text)
 
-# # Produce random text
-# random_text = make_text(chains)
+# Produce random text
+random_text = make_text(chains)
 
-# print(random_text)
+print(random_text)
