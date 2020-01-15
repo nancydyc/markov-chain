@@ -75,7 +75,7 @@ def make_text(chains):
 
     current_key = ("Would", "you")
 
-    new_string = ""
+    new_key_list = []
 
     # value_for_random_choice = chains[("Would", "you")]
 
@@ -87,7 +87,7 @@ def make_text(chains):
 
     new_key = (current_key)[1], choice(chains[("Would", "you")])
 
-    words.append(new_key)
+    new_key_list.append(new_key)
 
     # print(words)
 
@@ -95,17 +95,20 @@ def make_text(chains):
 
         new_key = (new_key)[1], choice(chains[new_key])
         
-        words.append(new_key[0])
+        new_key_list.append(new_key)
 
-    for word in words:
+    # print(new_key_list)
 
-        new_string += str(word[0])
+    for word in new_key_list:
+        
+        words.append(word[0])
 
-    print(new_string)
+    words.append(word[1])
+
+    # print(words)
 
 
-
-    # return " ".join(words)
+    return " ".join(words)
 
 
 input_path = "green-eggs.txt"
