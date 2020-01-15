@@ -64,8 +64,18 @@ def make_chains(text_string):
         
 
     # your code goes here
-
+    # print(chains)
     return chains
+
+def find_random_current_key(chains):
+
+    # for i in range(len())
+
+    current_key = choice(list(chains.keys()))
+
+    print(current_key)
+
+    return current_key
 
 
 def make_text(chains):
@@ -73,7 +83,9 @@ def make_text(chains):
 
     words = []
 
-    current_key = ("Would", "you")
+    # current_key = choice(open_and_read_file(input_path))
+    find_the_key = find_random_current_key(chains)
+    # print(current_key)
 
     new_key_list = []
 
@@ -85,7 +97,7 @@ def make_text(chains):
 
     # new_key = (current_key)[1], choice(chains[("Would", "you")])
 
-    new_key = (current_key)[1], choice(chains[("Would", "you")])
+    new_key = (find_the_key)[1], choice(chains[find_the_key])
 
     new_key_list.append(new_key)
 
@@ -103,7 +115,11 @@ def make_text(chains):
         
         words.append(word[0])
 
+        # print("inner loop", words)
+
     words.append(word[1])
+
+    # print("outer loop", words)
 
     # print(words)
 
@@ -111,7 +127,7 @@ def make_text(chains):
     return " ".join(words)
 
 
-input_path = "green-eggs.txt"
+input_path = "gettysburg.txt"
 
 
 #Open the file and turn it into one long string
